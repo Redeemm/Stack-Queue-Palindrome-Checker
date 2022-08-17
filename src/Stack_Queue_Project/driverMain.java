@@ -12,7 +12,7 @@ public class driverMain {
 
 	public static void main(String[] args) {
 		
-		final  int MAX_NUMBER_CHARACTERS = 100;
+		final  int MAX_NUMBER_CHARACTERS = 50;
 		String stringAllLetters = "";
 		
 		Scanner keyboard = new Scanner(System.in);

@@ -21,9 +21,9 @@ public class queue {
 	public void enqueue(char character){
 		if(isFull()) {
 			System.out.println("Queue is full. No elements can be added.");
-		}		
+		}
 		else {
-			rear = (rear + 1) % queueArray.length;  
+			rear = (rear + 1) % queueArray.length;
 			queueArray[rear] = character;
 			currentQueueSize++;
 		}
@@ -32,36 +32,36 @@ public class queue {
 	}
 
 	// Moves the character to 'front' position, assigns to variable and
-	// decrements the available size of the array; 
-	public char dequeue() {		
+	// decrements the available size of the array;
+	public char dequeue() {
 		char dequeuedCharacter = '\0';
-		
-		if(isEmpty()) 
+
+		if(isEmpty())
 			System.out.println("The queue is empty. Cannot remove anymore elements.");
-		
+
 		else {
 			dequeuedCharacter = queueArray[front];
 			queueArray[front] = '\0';
 			front = (front + 1) % queueArray.length;
-			--currentQueueSize;			
+			--currentQueueSize;
 		}
 		return dequeuedCharacter;
 	}
-		
+
 	// Checks to see if the array is empty
 	public boolean isEmpty() {
-		if(currentQueueSize == 0) 
+		if(currentQueueSize == 0)
 			return true;
 		return false;
 	}
-	
+
 	// Checks to see if the array is full
 	public boolean isFull() {
-		if(currentQueueSize == queueArray.length) 
+		if(currentQueueSize == queueArray.length)
 			return true;
 		return false;
 	}
-	
+
 	// Clear the 'queue' of all array contents
 	public void clearArray() {
 		//queueArray = null;
@@ -72,5 +72,5 @@ public class queue {
 	public String toString() {
 		return "queue [front=" + front + ", rear=" + rear + ", queueArray=" + Arrays.toString(queueArray)
 				+ ", currentQueueSize=" + currentQueueSize + "]";
-	}	
+	}
 } // end class
