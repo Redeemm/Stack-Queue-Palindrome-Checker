@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class stack {
 
-	private int maxSize;
+	private final int maxSize;
 	private int ptrNum;	// the location of the pointer; top of the stack
-	private char stackArray[];
+	private final char[] stackArray;
 
 	// Constructor
 	public stack(int capacity) { // Use 'capacity' for number of elements and remove 'maxSize' as a data member
@@ -17,18 +17,12 @@ public class stack {
 
 	// Checks to see if the array is empty
 	public boolean isEmpty() {
-		if(ptrNum < 0)
-			return true;
-		else
-			return false;
+		return ptrNum < 0;
 	}
 
 	// Checks to see if the array is full
 	public boolean isFull() {
-		if(ptrNum == (maxSize - 1))
-			return true;
-		else
-			return false;
+		return ptrNum == (maxSize - 1);
 	}
 
 	// Reset the stack ptrNum to top of stack
@@ -47,14 +41,14 @@ public class stack {
 	// Pop method 'pops' a value off the stack and decrements the value of ptrNum
 	public char pop() {
 
-		char character = '\0';
+		char character;
 
 		if(this.isEmpty()) {
 			System.out.println("The stack is empty.");
 			return '\0';
 
 		} else {
-			character = (char)stackArray[ptrNum];
+			character = stackArray[ptrNum];
 			ptrNum--;
 		}
 		return character;
@@ -64,7 +58,7 @@ public class stack {
 	public char top() {
 		char temp = '0';
 		if(ptrNum > -1)
-			temp =  (char)stackArray[ptrNum];
+			temp = stackArray[ptrNum];
 		return temp;
 	}
 

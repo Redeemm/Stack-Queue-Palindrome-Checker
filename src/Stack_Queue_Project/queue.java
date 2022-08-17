@@ -6,7 +6,7 @@ public class queue {
 
 	private int front;
 	private int rear;
-	private char[] queueArray;
+	private final char[] queueArray;
 	private int currentQueueSize;
 
 	// Constructor
@@ -50,16 +50,12 @@ public class queue {
 
 	// Checks to see if the array is empty
 	public boolean isEmpty() {
-		if(currentQueueSize == 0)
-			return true;
-		return false;
+		return currentQueueSize == 0;
 	}
 
 	// Checks to see if the array is full
 	public boolean isFull() {
-		if(currentQueueSize == queueArray.length)
-			return true;
-		return false;
+		return currentQueueSize == queueArray.length;
 	}
 
 	// Clear the 'queue' of all array contents

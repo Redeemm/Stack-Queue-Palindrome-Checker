@@ -13,7 +13,7 @@ public class driverMain {
 	public static void main(String[] args) {
 		
 		final  int MAX_NUMBER_CHARACTERS = 50;
-		String stringAllLetters = "";
+		StringBuilder stringAllLetters = new StringBuilder();
 		
 		Scanner keyboard = new Scanner(System.in);
 		
@@ -33,11 +33,11 @@ public class driverMain {
 			// Append a character to 'stringAllLetters' if it is a letter
 			for(int a = 0; a < userString.length(); ++a) {				
 				if(Character.isLetter(userString.charAt(a))) {
-					stringAllLetters += userString.charAt(a);
+					stringAllLetters.append(userString.charAt(a));
 				}
 			}
 			// Convert 'stringAllLetters' to capital letters
-			String stringAllCapitals = stringAllLetters.toUpperCase();
+			String stringAllCapitals = stringAllLetters.toString().toUpperCase();
 
 			// Create stack and queue objects, setting array elements to '\0'
 			stack characterStack = new stack(stringAllCapitals.length());
@@ -68,10 +68,10 @@ public class driverMain {
 			// Send strings to be tested as palindromes to each other
 			isPalindrome(stackExpressString, queueExpressString);
 		
-			// Set array elements to '\0' and mmpty appended string
+			// Set array elements to '\0' and empty appended string
 			characterStack.clearArray();
 			characterQueue.clearArray();
-			stringAllLetters = "";
+			stringAllLetters = new StringBuilder();
 			
 			// Ask the user if they with to play again; if so, test word length
 			System.out.print("\n\nTry another string or type 'quit' to exit: ");
@@ -95,10 +95,10 @@ public class driverMain {
 	    
 	} // end isPalindrome
 	
-	// Test that each string has palindrom qualities
+	// Test that each string has palindrome qualities
 	public static boolean testPalindromeQualities(String inputString) {
 		
-		boolean validPalidrome = true;
+		boolean validPalindrome = true;
 
 		// Check the word by testing the front and back letters for equality
 	    int forward = 0;
@@ -106,11 +106,13 @@ public class driverMain {
 	    while (backward > forward) {
 	        char forwardChar = inputString.charAt(forward++);
 	        char backwardChar = inputString.charAt(backward--);
-	        if (forwardChar != backwardChar)
-	        	validPalidrome = false;
+			if (forwardChar != backwardChar) {
+				validPalindrome = false;
+				break;
+			}
 	    }
 	    // String is a palindrome
-	    return validPalidrome;
+	    return validPalindrome;
 	    
 	}  // end testPalindromeQualities
 	
@@ -120,12 +122,10 @@ public class driverMain {
 		int userWordLength = userWord.length();
 		
 		// Returns false if the word has more than 100 characters
-		if(userWordLength > maxNumChars)
-			return false;
+		return userWordLength <= maxNumChars;
 		
 		// Return the word as is (no adjustments)
-		return true;
-		
+
 	} // end testCharacterCount
 	
 } // end driverMain() 
