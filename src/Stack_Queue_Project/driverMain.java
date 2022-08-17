@@ -94,8 +94,6 @@ public class driverMain {
     } // end main()
 
 
-
-
     // Compare stack string with the queue string; determine if they are palindromes to each other
     public static void isPalindrome(String stackString, String queueString) {
 
